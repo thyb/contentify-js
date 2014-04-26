@@ -11,6 +11,14 @@ do ($) ->
 			else
 				@mode = mode
 
+		clearCache: (filename) ->
+			if filename
+				delete @raw[filename]
+				delete @content[filename]
+			else
+				delete @raw
+				delete @content
+
 		getBaseUrl: () ->
 			return 'https://api.github.com/repos/' + @owner + '/' + @repo + '/contents/'
 

@@ -20,6 +20,16 @@ contentify = null;
       }
     };
 
+    Contentify.prototype.clearCache = function(filename) {
+      if (filename) {
+        delete this.raw[filename];
+        return delete this.content[filename];
+      } else {
+        delete this.raw;
+        return delete this.content;
+      }
+    };
+
     Contentify.prototype.getBaseUrl = function() {
       return 'https://api.github.com/repos/' + this.owner + '/' + this.repo + '/contents/';
     };
