@@ -1,0 +1,22 @@
+{
+    "name": "contentify",
+    "version": "0.0.1",
+    "main": "dist/contentify.js",
+    "ignore": [
+        "coffee",
+        ".bowerrc",
+        ".gitignore",
+        ".jshintignore",
+        ".jshintrc",
+        "bower.json",
+        "gruntfile.js",
+        "package.json",
+        "README.md"
+    ],
+    "dependencies": {
+        "jquery": ">=1.10.2",
+        "marked":"~0.3.2"
+    },
+    "devDependencies": {
+    }
+}
