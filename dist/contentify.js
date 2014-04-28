@@ -13,11 +13,7 @@ contentify = null;
     Contentify.prototype.initialize = function(owner, repo, mode) {
       this.owner = owner;
       this.repo = repo;
-      if (!mode) {
-        return this.mode = 'release';
-      } else {
-        return this.mode = mode;
-      }
+      return this.mode = mode || 'release';
     };
 
     Contentify.prototype.clearCache = function(filename) {
@@ -64,9 +60,9 @@ contentify = null;
       if (this.raw[filename]) {
         return callback(null, this.raw[filename]);
       }
-      branch = 'master';
-      if (this.mode === 'draft') {
-        branch = this.getSlug(filename);
+      branch = this.mode || 'master';
+      if (this.mode === 'release') {
+        branch = 'master';
       }
       return $.ajax({
         url: this.getBaseUrl() + filename + "?ref=" + branch,

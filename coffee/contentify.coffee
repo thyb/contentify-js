@@ -6,10 +6,7 @@ do ($) ->
 			@content = {}
 
 		initialize: (@owner, @repo, mode) ->
-			if not mode
-				@mode = 'release'
-			else
-				@mode = mode
+			@mode = mode || 'release'
 
 		clearCache: (filename) ->
 			if filename
@@ -42,9 +39,8 @@ do ($) ->
 			return callback 'no file' if not filename
 
 			return callback null, @raw[filename] if @raw[filename]
-			branch = 'master'
-			if @mode == 'draft'
-				branch = @getSlug filename
+			branch = @mode || 'master'
+			branch = 'master' if @mode == 'release'
 
 			$.ajax
 				url: @getBaseUrl() + filename + "?ref=" + branch
